@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Bitcoin Trading Terminal</title>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0a0f;
+            --secondary-bg: #12121a;
+            --card-bg: #1a1a24;
+            --border-color: #2a2a3a;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --bitcoin-orange: #f7931a;
+            --bitcoin-gold: #ffd166;
+            --buy-green: #06d6a0;
+            --sell-red: #ef476f;
+            --accent-blue: #79c0ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-bg), #0d0d17);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(18, 18, 26, 0.95));
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 32px;
+            color: var(--bitcoin-orange);
+            text-shadow: 0 0 15px rgba(247, 147, 26, 0.5);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--bitcoin-orange), var(--bitcoin-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(247, 147, 26, 0.3);
+        }
+
+        .market-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(6, 214, 160, 0.1);
+            border-radius: 20px;
+            border: 1px solid var(--buy-green);
+            color: var(--buy-green);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px 12px 48px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: rgba(26, 26, 36, 0.7);
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--bitcoin-orange);
+            box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-btn {
+            background: linear-gradient(135deg, var(--bitcoin-orange), var(--bitcoin-gold));
+            color: var(--primary-bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(247, 147, 26, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(247, 147, 26, 0.4);
+        }
+
+        .user-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--bitcoin-orange);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+        }
+
+        .dashboard-main {
+            display: flex;
+            flex: 1;
+            gap: 16px;
+            padding: 16px;
+            overflow: hidden;
+        }
+
+        .chart-section {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            flex: 1;
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(26, 26, 36, 0.8);
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chart-timeframe {
+            display: flex;
+            gap: 6px;
+        }
+
+        .timeframe-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(42, 42, 58, 0.7);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .timeframe-btn.active {
+            background: var(--bitcoin-orange);
+            color: var(--primary-bg);
+            font-weight: 600;
+        }
+
+        .chart-tools {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chart-tool {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: rgba(42, 42, 58, 0.7);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chart-tool:hover {
+            background: var(--bitcoin-orange);
+            color: var(--primary-bg);
+        }
+
+        .chart-tool.active {
+            background: var(--bitcoin-orange);
+            color: var(--primary-bg);
+        }
+
+        .chart-body {
+            height: 500px;
+            position: relative;
+        }
+
+        .price-overlay {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            z-index: 10;
+            background: linear-gradient(135deg, rgba(26, 26, 36, 0.95), rgba(26, 26, 36, 0.9));
+            padding: 16px 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--bitcoin-orange);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            min-width: 220px;
+        }
+
+        .price-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px rgba(247, 147, 26, 0.3);
+        }
+
+        .price-change {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .price-change.positive {
+            color: var(--buy-green);
+        }
+
+        .price-change.negative {
+            color: var(--sell-red);
+        }
+
+        .chart-indicators {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 10;
+            background: linear-gradient(135deg, rgba(26, 26, 36, 0.95), rgba(26, 26, 36, 0.9));
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .indicator {
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(247, 147, 26, 0.15);
+            border: 1px solid rgba(247, 147, 26, 0.3);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .chart-volume {
+            height: 120px;
+            background: rgba(26, 26, 36, 0.6);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: rgba(42, 42, 58, 0.7);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            background: rgba(42, 42, 58, 0.9);
+        }
+
+        .metric-value {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 8px 0;
+            background: linear-gradient(90deg, var(--bitcoin-orange), var(--bitcoin-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .metric-change {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .market-data {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .market-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .market-item:last-child {
+            border-bottom: none;
+        }
+
+        .market-symbol {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .market-symbol i {
+            color: var(--bitcoin-orange);
+        }
+
+        .market-price {
+            font-weight: 600;
+        }
+
+        .market-change.positive {
+            color: var(--buy-green);
+        }
+
+        .market-change.negative {
+            color: var(--sell-red);
+        }
+
+        .trading-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .order-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            background: rgba(42, 42, 58, 0.7);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--bitcoin-orange);
+            box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.3);
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .action-btn {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, var(--buy-green), #05b285);
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 214, 160, 0.4);
+        }
+
+        .sell-btn {
+            background: linear-gradient(135deg, var(--sell-red), #d32f5c);
+        }
+
+        .sell-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 71, 111, 0.4);
+        }
+
+        .order-book {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .order-book::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .order-book::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+
+        .order-book::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .order-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .order-row.header {
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .bid {
+            color: var(--buy-green);
+            text-align: right;
+        }
+
+        .ask {
+            color: var(--sell-red);
+            text-align: left;
+        }
+
+        .price {
+            text-align: center;
+        }
+
+        .order-history {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .position-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .position-info:last-child {
+            border-bottom: none;
+        }
+
+        .position-amount {
+            color: var(--buy-green);
+        }
+
+        .position-pnl.positive {
+            color: var(--buy-green);
+        }
+
+        .position-pnl.negative {
+            color: var(--sell-red);
+        }
+
+        .report-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-top: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .report-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+            color: var(--bitcoin-orange);
+        }
+        
+        .download-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--bitcoin-orange), var(--bitcoin-gold));
+            color: var(--primary-bg);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(247, 147, 26, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(247, 147, 26, 0.6);
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-main {
+                flex-direction: column;
+            }
+            
+            .chart-section {
+                flex: none;
+            }
+            
+            .chart-body {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .search-container {
+                max-width: 100%;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .header-right {
+                display: none;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 16px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body id="dashboard-body">
+    <div class="dashboard-header">
+        <div class="header-left">
+            <div class="logo-container">
+                <i class="fab fa-bitcoin logo"></i>
+                <div class="logo-text">BITCOIN TERMINAL</div>
+            </div>
+            <div class="market-status">
+                <i class="fas fa-circle"></i>
+                <span>MARKET OPEN</span>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-bar" placeholder="Search cryptocurrencies...">
+        </div>
+        
+        <div class="header-right">
+            <button class="header-btn">
+                <i class="fas fa-sync-alt"></i>
+                REFRESH
+            </button>
+            <div class="user-controls">
+                <div class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="icon-btn">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="icon-btn">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dashboard-main">
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <i class="fab fa-bitcoin"></i>
+                        <span>BTC/USD - Bitcoin</span>
+                    </div>
+                    <div class="chart-controls">
+                        <div class="chart-timeframe">
+                            <button class="timeframe-btn">1M</button>
+                            <button class="timeframe-btn">5M</button>
+                            <button class="timeframe-btn">15M</button>
+                            <button class="timeframe-btn">30M</button>
+                            <button class="timeframe-btn active">1H</button>
+                            <button class="timeframe-btn">4H</button>
+                            <button class="timeframe-btn">1D</button>
+                        </div>
+                        <div class="chart-tools">
+                            <div class="chart-tool" title="Drawing Tools">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <div class="chart-tool" title="Indicators">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="chart-tool" title="Compare">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-indicators">
+                    <div class="indicator">RSI(14)</div>
+                    <div class="indicator">MACD(12,26,9)</div>
+                    <div class="indicator">SMA(20)</div>
+                    <div class="indicator">SMA(50)</div>
+                    <div class="indicator">Bollinger(20,2)</div>
+                </div>
+                <div class="price-overlay">
+                    <div class="price-value">$72,345.67</div>
+                    <div class="price-change positive">+2.34% (+$1,685.21)</div>
+                </div>
+                <div class="chart-body" id="main-chart"></div>
+                <div class="chart-volume"></div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    MARKET OVERVIEW
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">24H High</div>
+                            <div class="metric-value">$72,567.89</div>
+                            <div class="metric-change">BTC</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">24H Low</div>
+                            <div class="metric-value">$69,876.54</div>
+                            <div class="metric-change">BTC</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">24H Volume</div>
+                            <div class="metric-value">2.45B</div>
+                            <div class="metric-change">USD</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Market Cap</div>
+                            <div class="metric-value">1.42T</div>
+                            <div class="metric-change">USD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-exchange-alt"></i>
+                    TRADING PAIRS
+                </div>
+                <div class="card-body market-data">
+                    <div class="market-item">
+                        <div class="market-symbol">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>BTC/USD</span>
+                        </div>
+                        <div class="market-price">$72,345.67</div>
+                        <div class="market-change positive">+2.34%</div>
+                    </div>
+                    <div class="market-item">
+                        <div class="market-symbol">
+                            <i class="fab fa-ethereum"></i>
+                            <span>ETH/USD</span>
+                        </div>
+                        <div class="market-price">$3,456.78</div>
+                        <div class="market-change positive">+1.23%</div>
+                    </div>
+                    <div class="market-item">
+                        <div class="market-symbol">
+                            <i class="fas fa-coins"></i>
+                            <span>SOL/USD</span>
+                        </div>
+                        <div class="market-price">$145.67</div>
+                        <div class="market-change negative">-0.45%</div>
+                    </div>
+                    <div class="market-item">
+                        <div class="market-symbol">
+                            <i class="fas fa-coins"></i>
+                            <span>ADA/USD</span>
+                        </div>
+                        <div class="market-price">$0.45</div>
+                        <div class="market-change positive">+0.89%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trading-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-exchange-alt"></i>
+                        TRADING PANEL
+                    </div>
+                    <div class="card-body">
+                        <div class="order-form">
+                            <div class="form-group">
+                                <label for="symbol">Symbol</label>
+                                <input type="text" id="symbol" class="form-control" value="BTC/USD" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="order-type">Order Type</label>
+                                <select id="order-type" class="form-control">
+                                    <option>Market</option>
+                                    <option>Limit</option>
+                                    <option>Stop-Limit</option>
+                                    <option>Stop-Market</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity (BTC)</label>
+                                <input type="number" id="quantity" class="form-control" value="0.1" step="0.001">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price (USD)</label>
+                                <input type="number" id="price" class="form-control" value="72345.67" step="0.01">
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="action-btn buy-btn">BUY BTC</button>
+                            <button class="action-btn sell-btn">SELL BTC</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-book"></i>
+                        ORDER BOOK
+                    </div>
+                    <div class="card-body">
+                        <div class="order-book">
+                            <div class="order-row header">
+                                <div class="ask">ASK</div>
+                                <div class="price">Price</div>
+                                <div class="bid">BID</div>
+                            </div>
+                            <div class="order-row">
+                                <div class="ask">0.45 @ $72,350</div>
+                                <div class="price">$72,345.67</div>
+                                <div class="bid">$72,340 @ 0.32</div>
+                            </div>
+                            <div class="order-row">
+                                <div class="ask">0.78 @ $72,355</div>
+                                <div class="price">$72,344.78</div>
+                                <div class="bid">$72,335 @ 0.61</div>
+                            </div>
+                            <div class="order-row">
+                                <div class="ask">1.23 @ $72,360</div>
+                                <div class="price">$72,342.34</div>
+                                <div class="bid">$72,330 @ 0.89</div>
+                            </div>
+                            <div class="order-row">
+                                <div class="ask">0.56 @ $72,365</div>
+                                <div class="price">$72,341.23</div>
+                                <div class="bid">$72,325 @ 1.05</div>
+                            </div>
+                            <div class="order-row">
+                                <div class="ask">2.12 @ $72,370</div>
+                                <div class="price">$72,338.90</div>
+                                <div class="bid">$72,320 @ 0.76</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-wallet"></i>
+                        POSITIONS
+                    </div>
+                    <div class="card-body">
+                        <div class="position-info">
+                            <div>BTC Balance</div>
+                            <div>1.234 BTC</div>
+                        </div>
+                        <div class="position-info">
+                            <div>USD Balance</div>
+                            <div>$56,789.00</div>
+                        </div>
+                        <div class="position-info">
+                            <div>Total P&L</div>
+                            <div class="position-pnl positive">+$12,345.67 (15.2%)</div>
+                        </div>
+                        <div class="position-info">
+                            <div>24H Change</div>
+                            <div class="position-pnl positive">+$2,345.67 (4.1%)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" id="report-section">
+                    <div class="report-title">
+                        <i class="fas fa-file-invoice"></i>
+                        ANALYSIS REPORT
+                    </div>
+                    <div class="card-body">
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Volatility (30D)</div>
+                                <div class="metric-value">32.7%</div>
+                                <div class="metric-change">High</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Max Drawdown</div>
+                                <div class="metric-value">-45.2%</div>
+                                <div class="metric-change">All Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Sharpe Ratio</div>
+                                <div class="metric-value">1.82</div>
+                                <div class="metric-change">Good</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Value at Risk (95%)</div>
+                                <div class="metric-value">-3.2%</div>
+                                <div class="metric-change">Daily</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="download-btn" id="download-pdf">
+                        <i class="fas fa-download"></i>
+                        DOWNLOAD ANALYSIS REPORT (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate sample data for the chart
+        function generateBTCData() {
+            const data = [];
+            let currentPrice = 70000;
+            
+            for (let i = 0; i < 100; i++) {
+                const date = new Date();
+                date.setHours(date.getHours() - i);
+                
+                // Generate realistic price movements
+                const volatility = 200 + Math.random() * 300;
+                const change = (Math.random() - 0.5) * volatility;
+                const open = currentPrice;
+                const close = open + change;
+                const high = Math.max(open, close) + Math.random() * 150;
+                const low = Math.min(open, close) - Math.random() * 150;
+                const volume = Math.floor(50000000 + Math.random() * 100000000);
+                
+                data.push({
+                    date: date,
+                    open: open,
+                    high: high,
+                    low: low,
+                    close: close,
+                    volume: volume
+                });
+                
+                currentPrice = close;
+            }
+            
+            // Reverse the array to get chronological order
+            return data.reverse();
+        }
+
+        // Create the main chart
+        function createChart() {
+            const btcData = generateBTCData();
+            
+            const dates = btcData.map(d => d.date);
+            const opens = btcData.map(d => d.open);
+            const highs = btcData.map(d => d.high);
+            const lows = btcData.map(d => d.low);
+            const closes = btcData.map(d => d.close);
+            const volumes = btcData.map(d => d.volume);
+            
+            // Calculate moving averages
+            function calculateSMA(data, period) {
+                const sma = [];
+                for (let i = 0; i < data.length; i++) {
+                    if (i < period - 1) {
+                        sma.push(null);
+                    } else {
+                        let sum = 0;
+                        for (let j = 0; j < period; j++) {
+                            sum += data[i - j];
+                        }
+                        sma.push(sum / period);
+                    }
+                }
+                return sma;
+            }
+            
+            const sma20 = calculateSMA(closes, 20);
+            const sma50 = calculateSMA(closes, 50);
+            
+            const trace1 = {
+                type: 'candlestick',
+                x: dates,
+                open: opens,
+                high: highs,
+                low: lows,
+                close: closes,
+                name: 'BTC/USD',
+                increasing: { 
+                    line: { color: '#06d6a0', width: 1 }, 
+                    fillcolor: 'rgba(6, 214, 160, 0.8)' 
+                },
+                decreasing: { 
+                    line: { color: '#ef476f', width: 1 }, 
+                    fillcolor: 'rgba(239, 71, 111, 0.8)' 
+                },
+                whiskerwidth: 0.05,
+                line: { width: 1 },
+                hovertemplate: '%{x}<br>' +
+                    '<b>Open:</b> $%{open}<br>' +
+                    '<b>High:</b> $%{high}<br>' +
+                    '<b>Low:</b> $%{low}<br>' +
+                    '<b>Close:</b> $%{close}<br>' +
+                    '<extra></extra>'
+            };
+            
+            const trace2 = {
+                x: dates,
+                y: sma20,
+                type: 'scatter',
+                mode: 'lines',
+                line: {color: '#79c0ff', width: 2, dash: 'dash'},
+                name: 'SMA20',
+                visible: true,
+                hovertemplate: 'SMA20: $%{y:.2f}<extra></extra>'
+            };
+            
+            const trace3 = {
+                x: dates,
+                y: sma50,
+                type: 'scatter',
+                mode: 'lines',
+                line: {color: '#ff7b72', width: 2, dash: 'dash'},
+                name: 'SMA50',
+                visible: true,
+                hovertemplate: 'SMA50: $%{y:.2f}<extra></extra>'
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Bitcoin (BTC/USD) - Advanced Candlestick Chart',
+                    font: { size: 16, color: '#e6edf3' },
+                    x: 0.05,
+                    y: 0.95
+                },
+                dragmode: 'pan',
+                margin: { r: 20, t: 60, b: 60, l: 60 },
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#e6edf3' },
+                xaxis: {
+                    rangeslider: { visible: false },
+                    gridcolor: 'rgba(139, 148, 158, 0.2)',
+                    showgrid: true,
+                    showline: false,
+                    showticklabels: true,
+                    tickcolor: '#2a2a3a',
+                    ticklen: 4,
+                    dtick: Math.floor(dates.length / 8),
+                    zeroline: false
+                },
+                yaxis: {
+                    gridcolor: 'rgba(139, 148, 158, 0.2)',
+                    showgrid: true,
+                    showline: false,
+                    showticklabels: true,
+                    tickcolor: '#2a2a3a',
+                    ticklen: 4,
+                    fixedrange: false,
+                    tickformat: '$,.0f',
+                    zeroline: false
+                },
+                showlegend: true,
+                legend: {
+                    x: 0.02,
+                    y: 0.98,
+                    bgcolor: 'rgba(26, 26, 36, 0.7)',
+                    bordercolor: '#2a2a3a',
+                    borderwidth: 1,
+                    font: { color: '#e6edf3' },
+                    orientation: 'h',
+                    yanchor: 'top',
+                    xanchor: 'left'
+                },
+                hovermode: 'x unified',
+                hoverlabel: {
+                    bgcolor: '#1a1a24',
+                    bordercolor: '#2a2a3a',
+                    font: { color: '#e6edf3' }
+                },
+                modebar: {
+                    bgcolor: 'rgba(26, 26, 36, 0.8)',
+                    color: '#8b949e',
+                    activecolor: '#f7931a'
+                }
+            };
+            
+            Plotly.newPlot('main-chart', [trace1, trace2, trace3], layout, {
+                displayModeBar: true,
+                displaylogo: false,
+                modeBarButtonsToAdd: ['pan2d', 'select2d', 'lasso2d'],
+                modeBarButtonsToRemove: ['autoScale2d', 'resetScale2d'],
+                responsive: true,
+                scrollZoom: true
+            });
+        }
+        
+        // Function to generate PDF report
+        function generatePDFReport() {
+            const element = document.getElementById('dashboard-body');
+            
+            // Create a copy of the dashboard for the PDF
+            const dashboardCopy = element.cloneNode(true);
+            
+            // Remove interactive elements that don't make sense in a PDF
+            const buttons = dashboardCopy.querySelectorAll('button, input, select');
+            buttons.forEach(button => button.remove());
+            
+            // Add a header with the report title
+            const reportHeader = document.createElement('div');
+            reportHeader.style.cssText = `
+                background: linear-gradient(135deg, #0a0a0f, #12121a);
+                color: #e6edf3;
+                padding: 20px;
+                text-align: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #2a2a3a;
+            `;
+            reportHeader.innerHTML = `
+                <h1 style="color: #f7931a; font-size: 28px; margin: 0;">BITCOIN ANALYSIS REPORT</h1>
+                <p style="color: #8b949e; margin: 10px 0 0 0;">Generated on ${new Date().toLocaleDateString()}</p>
+                <p style="color: #8b949e; font-size: 14px; margin: 5px 0 0 0;">Professional Bitcoin Trading Terminal</p>
+            `;
+            
+            // Insert the header at the beginning
+            dashboardCopy.insertBefore(reportHeader, dashboardCopy.firstChild);
+            
+            // Create a temporary container for the PDF
+            const tempContainer = document.createElement('div');
+            tempContainer.id = 'pdf-content';
+            tempContainer.style.cssText = `
+                position: absolute;
+                left: -9999px;
+                width: 800px;
+                background: #0a0a0f;
+                color: #e6edf3;
+            `;
+            tempContainer.appendChild(dashboardCopy);
+            document.body.appendChild(tempContainer);
+            
+            // Convert to PDF
+            const opt = {
+                margin: 10,
+                filename: 'bitcoin_analysis_report.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#0a0a0f',
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'landscape',
+                    compress: true
+                }
+            };
+            
+            html2pdf().set(opt).from(tempContainer).save().then(() => {
+                // Remove the temporary container after PDF generation
+                document.body.removeChild(tempContainer);
+            });
+        }
+        
+        // Initialize the dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createChart();
+            
+            // Add event listener for PDF download button
+            document.getElementById('download-pdf').addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING REPORT...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    generatePDFReport();
+                    this.innerHTML = '<i class="fas fa-download"></i> DOWNLOAD ANALYSIS REPORT (PDF)';
+                    this.disabled = false;
+                }, 1000);
+            });
+            
+            // Add event listeners for chart tools
+            document.querySelectorAll('.chart-tool').forEach(tool => {
+                tool.addEventListener('click', function() {
+                    document.querySelectorAll('.chart-tool').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Add event listeners for timeframe buttons
+            document.querySelectorAll('.timeframe-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.timeframe-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Add responsive functionality
+            window.addEventListener('resize', function() {
+                Plotly.Plots.resize('main-chart');
+            });
+        });
+    </script>
+</body>
+</html>

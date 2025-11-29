@@ -1,0 +1,19 @@
+# Financial Analysis Project
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+__pycache__/
+*.so
+.DS_Store
+.env
+.venv
+venv/
+.direnv/
+financial_analysis_project/data/processed/*
+financial_analysis_project/data/interim/*
+!financial_analysis_project/data/raw/

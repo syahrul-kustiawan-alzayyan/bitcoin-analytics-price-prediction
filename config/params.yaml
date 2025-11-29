@@ -1,0 +1,31 @@
+# Configuration parameters for financial analysis project
+
+# Data parameters
+tickers:
+  - "AAPL"
+  - "GOOGL"
+  - "MSFT"
+
+date_range:
+  start_date: "2020-01-01"
+  end_date: "2024-12-31"
+
+# Feature engineering parameters
+return_window: 1
+volatility_window: 20
+ma_windows:
+  - 20
+  - 50
+  - 200
+
+# Model parameters
+arima_order: [1, 1, 1]
+prophet_params:
+  seasonality_mode: "multiplicative"
+  changepoint_prior_scale: 0.05
+
+# Visualization parameters
+plot_colors:
+  - "#1f77b4"
+  - "#ff7f0e"
+  - "#2ca02c"
