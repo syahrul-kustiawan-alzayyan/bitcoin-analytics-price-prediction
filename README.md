@@ -1,142 +1,150 @@
-# Bitcoin Analytics Suite - Professional Financial Dashboard
+# Bitcoin Analytics Suite - Platform Analisis Keuangan Profesional / Professional Financial Analytics Platform
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Dashboard Preview](#dashboard-preview)
-- [Data Sources](#data-sources)
-- [Methodology](#methodology)
-- [Technical Implementation](#technical-implementation)
-- [Performance Metrics](#performance-metrics)
-- [Challenges & Solutions](#challenges--solutions)
-- [Future Enhancements](#future-enhancements)
-- [About the Author](#about-the-author)
+## Daftar Isi / Table of Contents
+- [Ikhtisar Proyek / Project Overview](#ikhtisar-proyek--project-overview)
+- [Fitur-fitur / Features](#fitur-fitur--features)
+- [Teknologi yang Digunakan / Technologies Used](#teknologi-yang-digunakan--technologies-used)
+- [Instalasi / Installation](#instalasi--installation)
+- [Penggunaan / Usage](#penggunaan--usage)
+- [Pratinjau Dasbor / Dashboard Preview](#pratinjau-dasbor--dashboard-preview)
+- [Sumber Data / Data Sources](#sumber-data--data-sources)
+- [Metodologi / Methodology](#metodologi--methodology)
+- [Implementasi Teknis / Technical Implementation](#implementasi-teknis--technical-implementation)
+- [Metrik Kinerja / Performance Metrics](#metrik-kinerja--performance-metrics)
+- [Tantangan & Solusi / Challenges & Solutions](#tantangan--solusi--challenges--solutions)
+- [Pengembangan Masa Depan / Future Enhancements](#pengembangan-masa-depan--future-enhancements)
+- [Tentang Penulis / About the Author](#tentang-penulis--about-the-author)
 
-## Project Overview
+## Ikhtisar Proyek / Project Overview
 
-The **Bitcoin Analytics Suite** is a professional-grade financial analysis and forecasting platform built specifically for Bitcoin market analysis. This project showcases advanced financial data processing, technical analysis, and predictive modeling capabilities using Python and modern dashboarding technologies.
+**Bitcoin Analytics Suite** adalah platform analisis dan peramalan keuangan tingkat lanjut yang dirancang secara khusus untuk analisis pasar Bitcoin. Proyek ini menunjukkan kemampuan pengolahan data keuangan tingkat lanjut, analisis teknikal, dan pembuatan model prediktif menggunakan Python dan teknologi dasbor modern.
 
-This comprehensive dashboard replicates the functionality and professional appearance of institutional trading platforms like TradingView, Bloomberg Terminal, and other professional financial analytics systems. The project demonstrates expertise in data science, financial analysis, and creating production-ready analytical tools for institutional use.
+Dasbor komprehensif ini mereplikasi fungsionalitas dan tampilan profesional dari platform perdagangan institusi seperti TradingView, Bloomberg Terminal, dan sistem analisis keuangan profesional lainnya. Proyek ini menunjukkan keahlian dalam ilmu data, analisis keuangan, dan pembuatan alat analitika siap produksi untuk penggunaan institusi.
 
-### Key Objectives:
-- Create a professional Bitcoin analysis dashboard comparable to institutional trading platforms
-- Implement technical analysis tools and forecasting algorithms
-- Demonstrate data processing and visualization capabilities
-- Showcase proficiency in Python, financial modeling, and dashboard development
-- Provide real-world application of data science techniques
+### Tujuan Utama / Key Objectives:
+- Membuat dasbor analisis Bitcoin profesional yang dapat dibandingkan dengan platform perdagangan institusi / Create a professional Bitcoin analysis dashboard comparable to institutional trading platforms
+- Mengimplementasikan alat analisis teknikal dan algoritma peramalan / Implement technical analysis tools and forecasting algorithms
+- Menunjukkan kemampuan pemrosesan dan visualisasi data / Demonstrate data processing and visualization capabilities
+- Menunjukkan keahlian dalam Python, pemodelan keuangan, dan pembuatan dasbor / Showcase proficiency in Python, financial modeling, and dashboard development
+- Menyediakan aplikasi dunia nyata dari teknik ilmu data / Provide real-world application of data science techniques
+- Memberikan platform berbasis data untuk analisis dan investasi Bitcoin / Provide data-driven platform for Bitcoin analysis and investment
 
-## Features
+### Ruang Lingkup Proyek / Project Scope:
+- **Analisis Harga Harian**: Tren harga historis, pola kenaikan/turun, volatilitas pasar / Daily Price Analysis: Historical price trends, bullish/bearish patterns, market volatility
+- **Permodelan Peramalan**: Prediksi harga jangka pendek dan panjang menggunakan pembelajaran mesin / Forecasting Modeling: Short and long term price predictions using machine learning
+- **Analisis Risiko**: Pengukuran Value at Risk (VaR), Drawdown maksimum, rasio Sharpe, metrik risiko lainnya / Risk Analysis: Value at Risk (VaR) measurements, Maximum drawdown, Sharpe ratio, other risk metrics
+- **Indikator Teknikal**: RSI, MACD, Bollinger Bands, Moving Averages, indikator lainnya / Technical Indicators: RSI, MACD, Bollinger Bands, Moving Averages, and other indicators
+- **Visualisasi Interaktif**: Grafik interaktif, dasbor multi-tab, alat gambar / Interactive Visualizations: Interactive charts, multi-tab dashboard, drawing tools
 
-### 📊 Professional Dashboard Design
-- **Corporate-grade interface** with Bitcoin-themed aesthetics
-- **Dark mode design** similar to TradingView and institutional trading platforms
-- **Responsive layout** with tab-based organization
-- **Professional typography** and color schemes
-- **Interactive charts** with zoom, pan, and technical indicators
+## Fitur-fitur / Features
 
-### 📈 Advanced Charting Capabilities
-- **Interactive candlestick charts** with volume profiles
-- **Technical indicators**: Moving averages, RSI, Bollinger Bands, MACD
-- **Customizable timeframes** with professional aggregation
-- **Drawing tools** and analysis capabilities
-- **Multi-timeframe analysis**
+### 📊 Desain Dasbor Profesional / Professional Dashboard Design
+- **Antarmuka tingkat korporat** dengan estetika tema Bitcoin / **Corporate-grade interface** with Bitcoin-themed aesthetics
+- **Desain mode gelap** mirip dengan TradingView dan platform perdagangan institusi / **Dark mode design** similar to TradingView and institutional trading platforms
+- **Tata letak responsif** dengan organisasi berbasis tab / **Responsive layout** with tab-based organization
+- **Tipografi dan skema warna profesional** / **Professional typography** and color schemes
+- **Grafik interaktif** dengan zoom, pan, dan indikator teknikal / **Interactive charts** with zoom, pan, and technical indicators
 
-### 🧠 Predictive Analytics
-- **Time-series forecasting** with multiple horizons (daily, monthly, yearly)
-- **Confidence intervals** and prediction bounds
-- **Risk-adjusted return projections**
-- **Monte Carlo simulations** for probabilistic outcomes
-- **Machine learning-based predictions**
+### 📈 Kemampuan Pemetaan Lanjutan / Advanced Charting Capabilities
+- **Grafik candlestick interaktif** dengan profil volume / **Interactive candlestick charts** with volume profiles
+- **Indikator teknikal**: Rata-rata bergerak, RSI, Bollinger Bands, MACD / **Technical indicators**: Moving averages, RSI, Bollinger Bands, MACD
+- **Rentang waktu yang dapat dikustomisasi** dengan agregasi profesional / **Customizable timeframes** with professional aggregation
+- **Alat gambar dan kemampuan analisis** / **Drawing tools** and analysis capabilities
+- **Analisis multi-rentang waktu** / **Multi-timeframe analysis**
 
-### 📊 Risk Analysis
-- **Volatility modeling** and risk metrics
-- **Value at Risk (VaR)** calculations
-- **Correlation analysis** between price movements
-- **Drawdown analysis** and risk profiling
-- **Sharpe ratio** and other risk-adjusted metrics
+### 🧠 Analitika Prediktif / Predictive Analytics
+- **Peramalan deret waktu** dengan beberapa jangka waktu (harian, bulanan, tahunan) / **Time-series forecasting** with multiple horizons (daily, monthly, yearly)
+- **Interval kepercayaan** dan batas prediksi / **Confidence intervals** and prediction bounds
+- **Proyeksi pengembalian yang disesuaikan dengan risiko** / **Risk-adjusted return projections**
+- **Simulasi Monte Carlo** untuk hasil probabilistik / **Monte Carlo simulations** for probabilistic outcomes
+- **Prediksi berbasis pembelajaran mesin** / **Machine learning-based predictions**
 
-### 📋 Institutional Reporting
-- **Executive reports** with forecast insights
-- **Automated PDF generation** for analysis results
-- **Professional data export** functionality
-- **Real-time data feeds** with historical context
-- **Market intelligence metrics**
+### 📊 Analisis Risiko / Risk Analysis
+- **Pemodelan volatilitas** dan metrik risiko / **Volatility modeling** and risk metrics
+- **Perhitungan Value at Risk (VaR)** / **Value at Risk (VaR)** calculations
+- **Analisis korelasi** antara pergerakan harga / **Correlation analysis** between price movements
+- **Analisis Drawdown** dan profiling risiko / **Drawdown analysis** and risk profiling
+- **Rasio Sharpe** dan metrik risiko yang disesuaikan lainnya / **Sharpe ratio** and other risk-adjusted metrics
 
-## Technologies Used
+### 📋 Laporan Institusi / Institutional Reporting
+- **Laporan eksekutif** dengan wawasan peramalan / **Executive reports** with forecast insights
+- **Generasi PDF otomatis** untuk hasil analisis / **Automated PDF generation** for analysis results
+- **Fungsionalitas ekspor data profesional** / **Professional data export** functionality
+- **Kanal data real-time** dengan konteks historis / **Real-time data feeds** with historical context
+- **Metrik intelijen pasar** / **Market intelligence metrics**
 
-### Programming Languages
-- **Python 3.8+**: Core programming language
-- **SQL** (for data queries if needed): Data extraction and manipulation
+## Teknologi yang Digunakan / Technologies Used
 
-### Libraries & Frameworks
-- **Streamlit**: Interactive dashboard framework
-- **Plotly/Plotly Express**: Advanced interactive charting
-- **Pandas**: Data manipulation and analysis
-- **NumPy**: Numerical computing
-- **Scikit-learn**: Machine learning algorithms
-- **Statsmodels**: Statistical analysis and forecasting
-- **TensorFlow/Keras**: Deep learning models (for advanced forecasting)
-- **Matplotlib/Seaborn**: Statistical visualizations
-- **Requests**: Data retrieval from APIs
+### Bahasa Pemrograman / Programming Languages
+- **Python 3.8+**: Bahasa pemrograman utama / Core programming language
+- **SQL** (untuk kueri data jika diperlukan): Manipulasi dan pengolahan data / Data extraction and manipulation
 
-### Financial Analysis Packages
-- **TA-Lib**: Technical analysis indicators
-- **Pyfolio**: Portfolio analysis (if integrated)
-- **QuantLib**: Quantitative finance library (if integrated)
+### Library & Framework / Libraries & Frameworks
+- **Streamlit**: Kerangka kerja dasbor interaktif / Interactive dashboard framework
+- **Plotly/Plotly Express**: Pemetaan interaktif tingkat lanjut / Advanced interactive charting
+- **Pandas**: Manipulasi dan analisis data / Data manipulation and analysis
+- **NumPy**: Komputasi numerik / Numerical computing
+- **Scikit-learn**: Algoritma pembelajaran mesin / Machine learning algorithms
+- **Statsmodels**: Analisis statistik dan peramalan / Statistical analysis and forecasting
+- **TensorFlow/Keras**: Model pembelajaran mendalam (untuk peramalan tingkat lanjut) / Deep learning models (for advanced forecasting)
+- **Matplotlib/Seaborn**: Visualisasi statistik / Statistical visualizations
+- **Requests**: Pengambilan data dari API / Data retrieval from APIs
 
-### Data Processing & Storage
-- **CSV**: Raw data storage format
-- **Pickle**: Model serialization
-- **JSON**: Configuration and metadata
+### Paket Analisis Keuangan / Financial Analysis Packages
+- **TA-Lib**: Indikator analisis teknikal / Technical analysis indicators
+- **Pyfolio**: Analisis portofolio (jika terintegrasi) / Portfolio analysis (if integrated)
+- **QuantLib**: Perpustakaan keuangan kuantitatif (jika terintegrasi) / Quantitative finance library (if integrated)
 
-### Development Tools
-- **Git**: Version control
-- **Jupyter Notebook**: Exploratory data analysis
-- **VS Code**: Development environment
-- **Docker** (planned): Containerization
+### Pemrosesan & Penyimpanan Data / Data Processing & Storage
+- **CSV**: Format penyimpanan data mentah / Raw data storage format
+- **Pickle**: Serialisasi model / Model serialization
+- **JSON**: Konfigurasi dan metadata / Configuration and metadata
 
-## Installation
+### Alat Pengembangan / Development Tools
+- **Git**: Kendali versi / Version control
+- **Jupyter Notebook**: Analisis data eksploratif / Exploratory data analysis
+- **VS Code**: Lingkungan pengembangan / Development environment
+- **Docker** (yang direncanakan): Kontainerisasi / Containerization
 
-### Prerequisites
-- Python 3.8 or higher
+## Instalasi / Installation
+
+### Prasyarat / Prerequisites
+- Python 3.8 atau lebih tinggi / Python 3.8 or higher
 - pip package manager
-- Git for version control
+- Git untuk kendali versi / Git for version control
 
-### Setup Instructions
+### Petunjuk Setup / Setup Instructions
 
-1. **Clone the repository**:
+1. **Klon repositori** / Clone the repository:
 ```bash
 git clone https://github.com/your_username/bitcoin-analytics-suite.git
 cd bitcoin-analytics-suite
 ```
 
-2. **Create a virtual environment** (recommended):
+2. **Buat lingkungan virtual** / Create a virtual environment (recommended):
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Di Windows: venv\Scripts\activate
 ```
 
-3. **Install required packages**:
+3. **Instal paket yang diperlukan** / Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Prepare the data**:
-- Place your BTC.csv file in the `data/raw/` directory
-- Or use the provided sample dataset
+4. **Siapkan data** / Prepare the data:
+- Tempatkan file BTC.csv Anda di direktori `data/raw/` / Place your BTC.csv file in the `data/raw/` directory
+- Atau gunakan dataset contoh yang disediakan / Or use the provided sample dataset
 
-5. **Run the dashboard**:
+5. **Jalankan dasbor** / Run the dashboard:
 ```bash
 streamlit run dashboard/streamlit_app.py
 ```
 
-6. **Access the dashboard**:
-- Open your browser and go to `http://localhost:8501`
+6. **Akses dasbor** / Access the dashboard:
+- Buka browser dan masuk ke `http://localhost:8501` / Open your browser and go to `http://localhost:8501`
 
-### Requirements File (requirements.txt)
+### File Persyaratan / Requirements File (requirements.txt)
 ```
 streamlit==1.28.0
 plotly==5.15.0
@@ -148,64 +156,65 @@ ta-lib==0.4.24
 tensorflow==2.13.0
 matplotlib==3.7.2
 seaborn==0.12.2
+html2pdf==0.0.1
 ```
 
-## Usage
+## Penggunaan / Usage
 
-### Starting the Application
-After installation, run the dashboard with:
+### Memulai Aplikasi / Starting the Application
+Setelah instalasi, jalankan dasbor dengan: / After installation, run the dashboard with:
 ```bash
 streamlit run dashboard/streamlit_app.py
 ```
 
-### Dashboard Navigation
-1. **Sidebar Controls**: 
-   - Select cryptocurrency (currently Bitcoin)
-   - Choose historical data range
-   - Set aggregation frequency (Daily, Weekly, Monthly)
-   - Select forecast horizon (daily, monthly, yearly)
+### Navigasi Dasbor / Dashboard Navigation
+1. **Kontrol Sidebar** / Sidebar Controls:
+   - Pilih cryptocurrency (saat ini Bitcoin) / Select cryptocurrency (currently Bitcoin)
+   - Pilih rentang data historis / Choose historical data range
+   - Atur frekuensi agregasi (Harian, Mingguan, Bulanan) / Set aggregation frequency (Daily, Weekly, Monthly)
+   - Pilih horizon peramalan (harian, bulanan, tahunan) / Select forecast horizon (daily, monthly, yearly)
 
-2. **Main Dashboard Tabs**:
-   - **Price Analytics**: Interactive candlestick charts with technical indicators
-   - **Risk Profiles**: Volatility analysis and risk metrics
-   - **Predictive Analytics**: Forecasting models with confidence intervals
-   - **Data Dashboard**: Raw data inspection and statistics
+2. **Tab Dasbor Utama** / Main Dashboard Tabs:
+   - **Analitika Harga**: Grafik candlestick interaktif dengan indikator teknikal / Price Analytics: Interactive candlestick charts with technical indicators
+   - **Profil Risiko**: Analisis volatilitas dan metrik risiko / Risk Profiles: Volatility analysis and risk metrics
+   - **Analitika Prediktif**: Model peramalan dengan interval kepercayaan / Predictive Analytics: Forecasting models with confidence intervals
+   - **Dasbor Data**: Inspeksi data mentah dan statistik / Data Dashboard: Raw data inspection and statistics
 
-3. **Generating Forecasts**:
-   - Navigate to "Predictive Analytics" tab
-   - Click "Generate Forecast" button
-   - View forecasted prices with confidence intervals
-   - Download executive reports in TXT format
+3. **Menghasilkan Prakiraan** / Generating Forecasts:
+   - Navigasi ke tab "Analitika Prediktif" / Navigate to "Predictive Analytics" tab
+   - Klik tombol "Hasilkan Prakiraan" / Click "Generate Forecast" button
+   - Lihat harga yang diprakirakan dengan interval kepercayaan / View forecasted prices with confidence intervals
+   - Unduh laporan eksekutif dalam format TXT / Download executive reports in TXT format
 
-### Key Controls Explained
-- **Time Framework**: Adjust the historical data range to analyze
-- **Aggregation Frequency**: Control how data is grouped (affects chart detail)
-- **Forecast Horizon**: Select prediction timeframe (affects forecast period)
-- **Generate Forecast**: Create machine learning-based price predictions
+### Kontrol Utama dijelaskan / Key Controls Explained
+- **Kerangka Waktu**: Sesuaikan rentang data historis untuk dianalisis / Time Framework: Adjust the historical data range to analyze
+- **Frekuensi Agregasi**: Kendalikan bagaimana data dikelompokkan (mempengaruhi detail grafik) / Aggregation Frequency: Control how data is grouped (affects chart detail)
+- **Horizon Prakiraan**: Pilih jangka waktu prediksi (mempengaruhi periode prakiraan) / Forecast Horizon: Select prediction timeframe (affects forecast period)
+- **Hasilkan Prakiraan**: Buat prediksi berbasis pembelajaran mesin berdasarkan harga historis / Generate Forecast: Create machine learning-based price predictions
 
-## Dashboard Preview
+## Pratinjau Dasbor / Dashboard Preview
 
-![Bitcoin Analytics Dashboard Preview](assets/dashboard_preview.png)
+![Pratinjau Dasbor Analitika Bitcoin / Bitcoin Analytics Dashboard Preview](assets/dashboard_preview.png)
 
-*Note: The above is a placeholder. Actual screenshots would be added here.*
+*Catatan: Di atas adalah placeholder. Screenshot aktual akan ditambahkan di sini. / Note: The above is a placeholder. Actual screenshots would be added here.*
 
-### Main Components:
-1. **Corporate Header**: Professional branding with market status
-2. **Metrics Dashboard**: Real-time price and performance indicators
-3. **Interactive Charts**: Technical analysis with drawing tools
-4. **Forecasting Engine**: Predictive analytics with confidence intervals
-5. **Risk Analytics**: Professional risk analysis tools
-6. **Export Functions**: PDF report generation
+### Komponen Utama / Main Components:
+1. **Header Korporat**: Branding profesional dengan status pasar / **Corporate Header**: Professional branding with market status
+2. **Dasbor Metrik**: Indikator harga dan kinerja real-time / **Metrics Dashboard**: Real-time price and performance indicators
+3. **Grafik Interaktif**: Analisis teknikal dengan alat gambar / **Interactive Charts**: Technical analysis with drawing tools
+4. **Mesin Prakiraan**: Analitika prediktif dengan interval kepercayaan / **Forecasting Engine**: Predictive analytics with confidence intervals
+5. **Analitika Risiko**: Alat analisis risiko tingkat institusi / **Risk Analytics**: Professional risk analysis tools
+6. **Fungsi Ekspor**: Generasi laporan PDF / **Export Functions**: PDF report generation
 
-## Data Sources
+## Sumber Data / Data Sources
 
-### Primary Dataset
-- **BTC.csv**: Historical Bitcoin price data
-- **Columns**: Date, Open, High, Low, Close, Volume
-- **Source**: Cryptocurrency exchanges or financial data providers
-- **Frequency**: Daily closing prices
+### Dataset Utama / Primary Dataset
+- **BTC.csv**: Data harga historis Bitcoin / Historical Bitcoin price data
+- **Kolom**: Tanggal, Pembukaan, Tertinggi, Terendah, Penutupan, Volume / Date, Open, High, Low, Close, Volume
+- **Sumber**: Bursa cryptocurrency atau penyedia data keuangan / Cryptocurrency exchanges or financial data providers
+- **Frekuensi**: Harga penutupan harian / Daily closing prices
 
-### Data Structure
+### Struktur Data / Data Structure
 ```
 ticker,date,open,high,low,close,volume
 BTC,2010-07-17,0.04951,0.04951,0.04951,0.04951,0
@@ -213,62 +222,62 @@ BTC,2010-07-18,0.04951,0.08585,0.04951,0.08584,0
 ...
 ```
 
-### Data Processing Pipeline
-1. **Loading**: Automated CSV data loading
-2. **Cleaning**: Handling missing values and outliers
-3. **Feature Engineering**: Creating technical indicators
-4. **Aggregation**: Time-based grouping based on user selection
-5. **Validation**: Ensuring data quality before analysis
+### Pipa Pemrosesan Data / Data Processing Pipeline
+1. **Pemuatan**: Pemuatan data CSV otomatis / Loading: Automated CSV data loading
+2. **Pembersihan**: Penanganan nilai yang hilang dan outlier / Cleaning: Handling missing values and outliers
+3. **Perekayasaan Fitur**: Pembuatan indikator teknikal / Feature Engineering: Creating technical indicators
+4. **Agregasi**: Pengelompokan berbasis waktu berdasarkan pilihan pengguna / Aggregation: Time-based grouping based on user selection
+5. **Validasi**: Menjamin kualitas data sebelum analisis / Validation: Ensuring data quality before analysis
 
-## Methodology
+## Metodologi / Methodology
 
-### Technical Analysis Approach
-1. **Price Action Analysis**: 
-   - Support and resistance levels
-   - Candlestick pattern recognition
-   - Volume profile analysis
+### Pendekatan Analisis Teknikal / Technical Analysis Approach
+1. **Analisis Aksi Harga** / Price Action Analysis:
+   - Level dukungan dan resistensi / Support and resistance levels
+   - Pengenalan pola candlestick / Candlestick pattern recognition
+   - Analisis profil volume / Volume profile analysis
 
-2. **Momentum Indicators**:
-   - RSI (Relative Strength Index)
-   - MACD (Moving Average Convergence Divergence)
-   - Stochastic Oscillator
+2. **Indikator Momentum** / Momentum Indicators:
+   - RSI (Relative Strength Index) / RSI (Relative Strength Index)
+   - MACD (Moving Average Convergence Divergence) / MACD (Moving Average Convergence Divergence)
+   - Stochastic Oscillator / Stochastic Oscillator
 
-3. **Trend Indicators**:
-   - Simple/Moving Averages
-   - Exponential Moving Averages
-   - Bollinger Bands
+3. **Indikator Tren** / Trend Indicators:
+   - Rata-rata Bergerak Sederhana / Simple/Moving Averages
+   - Rata-rata Bergerak Eksponensial / Exponential Moving Averages
+   - Bollinger Bands / Bollinger Bands
 
-4. **Volatility Measures**:
-   - Average True Range (ATR)
-   - Standard Deviation
-   - Implied volatility (calculated)
+4. **Ukuran Volatilitas** / Volatility Measures:
+   - Rentang Benar Rata-rata (ATR) / Average True Range (ATR)
+   - Deviasi Standar / Standard Deviation
+   - Volatilitas tersirat (dihitung) / Implied volatility (calculated)
 
-### Forecasting Models
+### Model Prakiraan / Forecasting Models
 
-#### 1. Time Series Models
-- **ARIMA**: AutoRegressive Integrated Moving Average for trend prediction
-- **Prophet**: Facebook's forecasting library for seasonality detection
-- **LSTM**: Long Short-Term Memory networks for deep learning predictions
+#### 1. Model Deret Waktu / Time Series Models
+- **ARIMA**: Regresi Autoregressive Terpadu Bergerak untuk prediksi tren / AutoRegressive Integrated Moving Average for trend prediction
+- **Prophet**: Perpustakaan peramalan Facebook untuk deteksi musiman / Facebook's forecasting library for seasonality detection
+- **LSTM**: Jaringan Memory Jangka Pendek untuk prediksi pembelajaran mendalam / Long Short-Term Memory networks for deep learning predictions
 
-#### 2. Ensemble Methods
-- **Random Forest**: Feature-based ensemble learning
-- **Gradient Boosting**: XGBoost for price prediction
-- **Support Vector Regression**: Non-linear regression models
+#### 2. Metode Ensemble / Ensemble Methods
+- **Random Forest**: Pembelajaran ensemble berbasis fitur / Feature-based ensemble learning
+- **Gradient Boosting**: XGBoost untuk prediksi harga / XGBoost for price prediction
+- **Support Vector Regression**: Model regresi non-linier / Non-linear regression models
 
-#### 3. Monte Carlo Simulation
-- Probabilistic forecasting with confidence intervals
-- Risk-aware predictions
-- Scenario analysis capabilities
+#### 3. Simulasi Monte Carlo / Monte Carlo Simulation
+- Prakiraan probabilistik dengan interval kepercayaan / Probabilistic forecasting with confidence intervals
+- Prediksi yang sadar risiko / Risk-aware predictions
+- Kemampuan analisis skenario / Scenario analysis capabilities
 
-### Risk Management Framework
-1. **Volatility Calculations**: Rolling standard deviation
-2. **Value at Risk (VaR)**: Statistical risk measures
-3. **Maximum Drawdown**: Historical peak-to-trough measurements
-4. **Sharpe Ratio**: Risk-adjusted return metrics
+### Kerangka Manajemen Risiko / Risk Management Framework
+1. **Perhitungan Volatilitas**: Deviasi standar bergulir / Volatility Calculations: Rolling standard deviation
+2. **Nilai pada Risiko (VaR)**: Ukuran risiko statistik / Value at Risk (VaR): Statistical risk measures
+3. **Drawdown Maksimum**: Pengukuran puncak-ke-lembah historis / Maximum Drawdown: Historical peak-to-trough measurements
+4. **Rasio Sharpe**: Metrik pengembalian disesuaikan dengan risiko / Sharpe Ratio: Risk-adjusted return metrics
 
-## Technical Implementation
+## Implementasi Teknis / Technical Implementation
 
-### Architecture Overview
+### Gambaran Arsitektur / Architecture Overview
 ```
 data/
 ├── raw/
@@ -294,93 +303,93 @@ assets/
 ├── dashboard_preview.png
 ```
 
-### Key Components
+### Komponen Utama / Key Components
 
-#### 1. Data Loading (`src/data_loading.py`)
-- Efficient CSV loading with date parsing
-- Data type optimization
-- Memory-efficient processing for large datasets
+#### 1. Pemuatan Data / Data Loading (`src/data_loading.py`)
+- Pemuatan CSV efisien dengan parsing tanggal / Efficient CSV loading with date parsing
+- Optimalisasi jenis data / Data type optimization
+- Pemrosesan memori-efisien untuk dataset besar / Memory-efficient processing for large datasets
 
-#### 2. Data Cleaning (`src/data_cleaning.py`)
-- Missing value imputation strategies
-- Outlier detection and handling
-- Data validation and quality checks
+#### 2. Pembersihan Data / Data Cleaning (`src/data_cleaning.py`)
+- Strategi imputasi nilai yang hilang / Missing value imputation strategies
+- Deteksi dan penanganan outlier / Outlier detection and handling
+- Pemeriksaan validasi dan kualitas data / Data validation and quality checks
 
-#### 3. Feature Engineering (`src/feature_engineering.py`)
-- Technical indicator calculations
-- Lag feature generation
-- Volatility and momentum features
-- Statistical transformations
+#### 3. Perekayasaan Fitur / Feature Engineering (`src/feature_engineering.py`)
+- Perhitungan indikator teknikal / Technical indicator calculations
+- Pembuatan fitur lag / Lag feature generation
+- Fitur volatilitas dan momentum / Volatility and momentum features
+- Transformasi statistik / Statistical transformations
 
-#### 4. Modeling (`src/modeling.py`)
-- Multiple forecasting algorithms
-- Model evaluation and comparison
-- Hyperparameter optimization
-- Ensemble model creation
+#### 4. Pemodelan / Modeling (`src/modeling.py`)
+- Beberapa algoritma peramalan / Multiple forecasting algorithms
+- Evaluasi dan perbandingan model / Model evaluation and comparison
+- Optimasi hyperparameter / Hyperparameter optimization
+- Pembuatan model ensemble / Ensemble model creation
 
-#### 5. Visualization (`src/visualization.py`)
-- Interactive chart creation
-- Dashboard layout design
-- Professional styling implementation
-- Export functionality
+#### 5. Visualisasi / Visualization (`src/visualization.py`)
+- Pembuatan grafik interaktif / Interactive chart creation
+- Desain tata letak dasbor / Dashboard layout design
+- Implementasi styling profesional / Professional styling implementation
+- Fungsionalitas ekspor / Export functionality
 
-#### 6. Dashboard (`dashboard/streamlit_app.py`)
-- Interactive user interface
-- Real-time data processing
-- Forecast generation interface
-- Professional styling and layout
+#### 6. Dasbor / Dashboard (`dashboard/streamlit_app.py`)
+- Antarmuka pengguna interaktif / Interactive user interface
+- Pemrosesan data real-time / Real-time data processing
+- Antarmuka generasi prakiraan / Forecast generation interface
+- Styling dan tata letak profesional / Professional styling and layout
 
-### Algorithm Implementation Details
+### Detail Implementasi Algoritma / Algorithm Implementation Details
 
-#### Feature Engineering Pipeline
+#### Pipa Perekayasaan Fitur / Feature Engineering Pipeline
 ```python
 def engineer_features(df):
-    # Calculate returns
+    # Hitung return / Calculate returns
     df['returns'] = df['Close'].pct_change()
     
-    # Moving averages
+    # Rata-rata bergerak / Moving averages
     df['MA_20'] = df['Close'].rolling(20).mean()
     df['MA_50'] = df['Close'].rolling(50).mean()
     
-    # RSI (Relative Strength Index)
+    # RSI (Relative Strength Index) / RSI (Relative Strength Index)
     df['RSI'] = calculate_rsi(df['Close'])
     
-    # Bollinger Bands
+    # Bollinger Bands / Bollinger Bands
     df['BB_upper'], df['BB_middle'], df['BB_lower'] = calculate_bollinger_bands(df['Close'])
     
-    # MACD
+    # MACD / MACD
     df['MACD'], df['MACD_signal'] = calculate_macd(df['Close'])
     
     return df
 ```
 
-#### Forecasting Engine
+#### Mesin Peramalan / Forecasting Engine
 ```python
 def create_forecast_simulation(df, forecast_period):
-    # Determine forecast length based on period
+    # Tentukan panjang prakiraan berdasarkan periode / Determine forecast length based on period
     forecast_length = determine_forecast_length(forecast_period)
     
-    # Apply appropriate forecasting model
+    # Terapkan model peramalan yang sesuai / Apply appropriate forecasting model
     model = select_optimal_model(df)
     
-    # Generate forecast with confidence intervals
+    # Hasilkan prakiraan dengan interval kepercayaan / Generate forecast with confidence intervals
     forecast, confidence_intervals = model.predict(df, forecast_length)
     
-    # Create visualization
+    # Buat visualisasi / Create visualization
     chart = create_forecast_chart(df, forecast, confidence_intervals)
     
     return chart, forecast
 ```
 
-## Performance Metrics
+## Metrik Kinerja / Performance Metrics
 
-### Accuracy Measurements
-- **RMSE** (Root Mean Square Error): Overall prediction accuracy
-- **MAE** (Mean Absolute Error): Average prediction deviation
-- **MAPE** (Mean Absolute Percentage Error): Percentage accuracy measure
-- **R² Score**: Variance explained by the model
+### Pengukuran Akurasi / Accuracy Measurements
+- **RMSE** (Root Mean Square Error): Akurasi prediksi keseluruhan / Overall prediction accuracy
+- **MAE** (Mean Absolute Error): Deviasi prediksi rata-rata / Average prediction deviation
+- **MAPE** (Mean Absolute Percentage Error): Ukuran akurasi persentase / Percentage accuracy measure
+- **Skor R²**: Variansi yang dijelaskan oleh model / Variance explained by the model
 
-### Model Performance Benchmarks
+### Benchmark Kinerja Model / Model Performance Benchmarks
 | Model | RMSE | MAE | MAPE | R² |
 |-------|------|-----|------|-----|
 | ARIMA | 0.045 | 0.032 | 2.1% | 0.87 |
@@ -388,96 +397,100 @@ def create_forecast_simulation(df, forecast_period):
 | LSTM | 0.038 | 0.028 | 1.7% | 0.91 |
 | Ensemble | 0.035 | 0.025 | 1.5% | 0.93 |
 
-### Risk Metrics
-- **Volatility**: Standard deviation of returns
-- **Sharpe Ratio**: Risk-adjusted return measure
-- **Value at Risk (95%)**: Potential loss measure
-- **Maximum Drawdown**: Peak-to-trough decline
+### Metrik Risiko / Risk Metrics
+- **Volatilitas**: Deviasi standar dari return / Volatility: Standard deviation of returns
+- **Rasio Sharpe**: Ukuran pengembalian disesuaikan dengan risiko / Sharpe Ratio: Risk-adjusted return measure
+- **Nilai pada Risiko (95%)**: Ukuran potensi kerugian / Value at Risk (95%): Potential loss measure
+- **Drawdown Maksimum**: Penurunan puncak-ke-lembah / Maximum Drawdown: Peak-to-trough decline
 
-## Challenges & Solutions
+## Tantangan & Solusi / Challenges & Solutions
 
-### Technical Challenges
+### Tantangan Teknis / Technical Challenges
 
-#### 1. Data Quality Issues
-**Challenge**: Cryptocurrency data contains gaps, outliers, and inconsistencies
-**Solution**: Implemented robust data cleaning pipeline with multiple imputation strategies
+#### 1. Masalah Kualitas Data / Data Quality Issues
+**Tantangan**: Data cryptocurrency berisi celah, nilai ekstrem, dan inkonsistensi / Challenge: Cryptocurrency data contains gaps, outliers, and inconsistencies
+**Solusi**: Diterapkan pipa pembersihan data yang kuat dengan strategi imputasi ganda / Solution: Implemented robust data cleaning pipeline with multiple imputation strategies
 
-#### 2. Model Selection Complexity
-**Challenge**: Choosing optimal forecasting models for volatile crypto markets
-**Solution**: Ensemble approach combining multiple algorithms with dynamic weight adjustment
+#### 2. Kompleksitas Pemilihan Model / Model Selection Complexity
+**Tantangan**: Memilih model peramalan optimal untuk pasar crypto yang sangat fluktuatif / Challenge: Choosing optimal forecasting models for volatile crypto markets
+**Solusi**: Pendekatan ensemble menggabungkan beberapa algoritma dengan penyesuaian bobot dinamis / Solution: Ensemble approach combining multiple algorithms with dynamic weight adjustment
 
-#### 3. Real-time Processing
-**Challenge**: Providing interactive dashboard with large datasets
-**Solution**: Optimized data structures and caching mechanisms
+#### 3. Pemrosesan Real-time / Real-time Processing
+**Tantangan**: Menyediakan dasbor interaktif dengan dataset besar / Challenge: Providing interactive dashboard with large datasets
+**Solusi**: Struktur data dan mekanisme caching yang dioptimalkan / Solution: Optimized data structures and caching mechanisms
 
-#### 4. Accuracy vs. Speed Trade-off
-**Challenge**: Balancing prediction accuracy with computation time
-**Solution**: Tiered approach with quick estimates and detailed analysis options
+#### 4. Kompromi Akurasi vs Kecepatan / Accuracy vs Speed Trade-off
+**Tantangan**: Menyeimbangkan akurasi prediksi dengan waktu komputasi / Challenge: Balancing prediction accuracy with computation time
+**Solusi**: Pendekatan bertingkat dengan estimasi cepat dan opsi analisis terperinci / Solution: Tiered approach with quick estimates and detailed analysis options
 
-### Design Challenges
+### Tantangan Desain / Design Challenges
 
-#### 1. Professional Appearance
-**Challenge**: Creating institutional-grade UI comparable to TradingView
-**Solution**: Extensive CSS customization with gradient backgrounds, professional typography, and sophisticated layout
+#### 1. Tampilan Profesional / Professional Appearance
+**Tantangan**: Membuat UI institusi-grade yang dapat dibandingkan dengan TradingView / Challenge: Creating institutional-grade UI comparable to TradingView
+**Solusi**: Kustomisasi CSS ekstensif dengan latar belakang gradien, tipografi profesional, dan tata letak canggih / Solution: Extensive CSS customization with gradient backgrounds, professional typography, and sophisticated layout
 
-#### 2. Responsive Design
-**Challenge**: Making dashboard work across devices
-**Solution**: Flexible grid system with media queries for different screen sizes
+#### 2. Desain Responsif / Responsive Design
+**Tantangan**: Membuat dasbor berfungsi di semua perangkat / Challenge: Making dashboard work across devices
+**Solusi**: Sistem grid fleksibel dengan kueri media untuk berbagai ukuran layar / Solution: Flexible grid system with media queries for different screen sizes
 
-#### 3. Information Density
-**Challenge**: Displaying complex financial metrics without clutter
-**Solution**: Tab-based organization with progressive disclosure
+#### 3. Kepadatan Informasi / Information Density
+**Tantangan**: Menampilkan metrik keuangan kompleks tanpa kerusakan / Challenge: Displaying complex financial metrics without clutter
+**Solusi**: Organisasi berbasis tab dengan pengungkapan progresif / Solution: Tab-based organization with progressive disclosure
 
-## Future Enhancements
+## Pengembangan Masa Depan / Future Enhancements
 
-### Planned Features
-1. **Real-time Data**: Integration with cryptocurrency exchange APIs
-2. **Additional Assets**: Support for other major cryptocurrencies
-3. **Advanced Models**: Transformer-based neural networks
-4. **Backtesting Engine**: Historical model validation
-5. **Alert System**: Price and technical alert notifications
-6. **Portfolio Tracking**: Multi-asset portfolio analysis
-7. **Advanced Indicators**: Custom technical indicators
-8. **Mobile Optimization**: Native mobile application
+### Fitur yang Direncanakan / Planned Features
+1. **Data Real-time**: Integrasi dengan API bursa cryptocurrency / **Real-time Data**: Integration with cryptocurrency exchange APIs
+2. **Aset Tambahan**: Dukungan untuk cryptocurrency lain yang utama / **Additional Assets**: Support for other major cryptocurrencies
+3. **Model Lanjutan**: Jaringan saraf berbasis Transformer / **Advanced Models**: Transformer-based neural networks
+4. **Mesin Backtesting**: Validasi model historis / **Backtesting Engine**: Historical model validation
+5. **Sistem Peringatan**: Pemberitahuan harga dan teknikal / **Alert System**: Price and technical alert notifications
+6. **Pelacakan Portofolio**: Analisis portofolio multi-aset / **Portfolio Tracking**: Multi-asset portfolio analysis
+7. **Indikator Lanjutan**: Indikator teknikal kustom / **Advanced Indicators**: Custom technical indicators
+8. **Aplikasi Seluler**: Aplikasi seluler asli / **Mobile App**: Native mobile application
 
-### Technical Roadmap
-- **Q1 2024**: API integration and real-time data feeds
-- **Q2 2024**: Multi-cryptocurrency support
-- **Q3 2024**: Advanced deep learning models
-- **Q4 2024**: Mobile application development
+### Roadmap Teknis / Technical Roadmap
+- **K1 2024**: Integrasi API dan kanal data real-time / **Q1 2024**: API integration and real-time data feeds
+- **K2 2024**: Dukungan multi-cryptocurrency / **Q2 2024**: Multi-cryptocurrency support
+- **K3 2024**: Model pembelajaran mendalam lanjutan / **Q3 2024**: Advanced deep learning models
+- **K4 2024**: Pengembangan aplikasi seluler / **Q4 2024**: Mobile application development
 
-### Research Areas
-- **Alternative Data**: Social sentiment and blockchain metrics
-- **Market Microstructure**: Order book analysis
-- **Cross-Asset Correlations**: Inter-market relationships
-- **Regulatory Impact**: Policy change modeling
+### Area Riset / Research Areas
+- **Data Alternatif**: Sentimen sosial dan metrik blockchain / **Alternative Data**: Social sentiment and blockchain metrics
+- **Struktur Mikro Pasar**: Analisis buku pesanan / **Market Microstructure**: Order book analysis
+- **Korelasi Aset Silang**: Hubungan antar pasar / **Cross-Asset Correlations**: Inter-market relationships
+- **Dampak Regulasi**: Pemodelan perubahan kebijakan / **Regulatory Impact**: Policy change modeling
 
-## About the Author
+## Tentang Penulis / About the Author
 
-### Professional Profile
-**Data Scientist & Financial Analyst** with expertise in cryptocurrency markets, algorithmic trading, and institutional dashboard development.
+### Profil Profesional / Professional Profile
+**Ilmuwan Data & Analis Keuangan** dengan keahlian dalam pasar cryptocurrency, perdagangan algoritmik, dan pengembangan dasbor institusi.
 
-### Skills Demonstrated in This Project
-- **Data Science**: Feature engineering, model building, statistical analysis
-- **Financial Analysis**: Technical analysis, risk management, portfolio theory
-- **Software Engineering**: Python development, API integration, dashboard creation
-- **Visualization**: Interactive charting, dashboard design, user experience
-- **Research**: Market analysis, model validation, performance metrics
+### Data Scientist & Financial Analyst with expertise in cryptocurrency markets, algorithmic trading, and institutional dashboard development.
 
-### Portfolio Applications
-This project demonstrates:
-- Proficiency in Python and data science libraries
-- Understanding of financial markets and instruments
-- Ability to create production-quality applications
-- Knowledge of machine learning and forecasting
-- Professional-level UI/UX design skills
+### Keterampilan Ditunjukkan dalam Proyek Ini / Skills Demonstrated in This Project
+- **Ilmu Data**: Perekayasaan fitur, pembuatan model, analisis statistik / **Data Science**: Feature engineering, model building, statistical analysis
+- **Analisis Keuangan**: Analisis teknikal, manajemen risiko, teori portofolio / **Financial Analysis**: Technical analysis, risk management, portfolio theory
+- **Rekayasa Perangkat Lunak**: Pengembangan Python, integrasi API, pembuatan dasbor / **Software Engineering**: Python development, API integration, dashboard creation
+- **Visualisasi**: Pemetaan interaktif, desain dasbor, pengalaman pengguna / **Visualization**: Interactive charting, dashboard design, user experience
+- **Riset**: Analisis pasar, validasi model, metrik kinerja / **Research**: Market analysis, model validation, performance metrics
 
-### Contact Information
-For inquiries about this project or collaboration opportunities:
-- [Your Email]
-- [LinkedIn Profile]
-- [GitHub Profile]
+### Aplikasi Portofolio / Portfolio Applications
+Proyek ini menunjukkan: / This project demonstrates:
+- Keahlian dalam Python dan pustaka ilmu data / Proficiency in Python and data science libraries
+- Pemahaman tentang pasar keuangan dan instrumen / Understanding of financial markets and instruments
+- Kemampuan membuat aplikasi siap produksi / Ability to create production-quality applications
+- Pengetahuan tentang pembelajaran mesin dan peramalan / Knowledge of machine learning and forecasting
+- Keterampilan desain UI/UX tingkat profesional / Professional-level UI/UX design skills
+
+### Informasi Kontak / Contact Information
+Untuk pertanyaan tentang proyek ini atau peluang kolaborasi: / For inquiries about this project or collaboration opportunities:
+- [Email Anda / Your Email]
+- [Profil LinkedIn / LinkedIn Profile]
+- [Profil GitHub / GitHub Profile]
 
 ---
+
+*Suite Analitika Bitcoin ini menunjukkan keahlian tingkat lanjut dalam analisis data keuangan, pemodelan prediktif, dan pembuatan dasbor profesional. Proyek ini menunjukkan integrasi konsep keuangan kompleks dengan teknologi modern untuk menciptakan alat analitika tingkat institusi.*
 
 *This Bitcoin Analytics Suite represents advanced proficiency in financial data analysis, predictive modeling, and professional dashboard development. The project showcases the integration of complex financial concepts with modern technology to create institutional-grade analytical tools.*
