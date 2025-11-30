@@ -198,7 +198,7 @@ streamlit run dashboard/streamlit_app.py
 
 ## Dashboard Preview
 
-*Note: This section would showcase actual screenshots of the Bitcoin Analytics Suite dashboard.*
+![ Dashboard](Reports/Images/image.png)
 
 ### Main Components:
 1. **Corporate Header**: Branding profesional dengan market status
