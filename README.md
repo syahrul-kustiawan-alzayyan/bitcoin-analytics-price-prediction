@@ -198,7 +198,7 @@ streamlit run dashboard/streamlit_app.py
 
 ## Dashboard Preview
 
-![ Dashboard](Reports/Images/image.png)
+![Dashboard Preview](reports/images/image.png)
 
 ### Main Components:
 1. **Corporate Header**: Branding profesional dengan market status
